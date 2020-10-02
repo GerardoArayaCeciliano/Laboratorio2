@@ -5,10 +5,13 @@
  */
 package org.una.laboratorio2.repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.una.laboratorio2.entities.Ruta;
+
 /**
  *
  * @author LordLalo
  */
-public interface IRutaRepository {
+public interface IRutaRepository extends JpaRepository<Ruta,Long> {
     
 }
