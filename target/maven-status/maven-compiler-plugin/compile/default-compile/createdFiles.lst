@@ -1,0 +1,9 @@
+org\una\laboratorio2\Laboratorio2Application.class
+org\una\laboratorio2\entities\Ciudad.class
+org\una\laboratorio2\entities\Ruta.class
+org\una\laboratorio2\entities\Autobus.class
+org\una\laboratorio2\entities\RutaCiudad.class
+org\una\laboratorio2\entities\Ruta_.class
+org\una\laboratorio2\entities\Autobus_.class
+org\una\laboratorio2\entities\Ciudad_.class
+org\una\laboratorio2\entities\RutaCiudad_.class
