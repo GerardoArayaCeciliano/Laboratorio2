@@ -10,7 +10,7 @@ import org.una.laboratorio2.dto.AutobusDto;
  */
 public interface IAutobusService {
 
-    Optional<AutobusDto> getById(long id);
+    public Optional<AutobusDto> findById(long id);
 
     public Optional<List<AutobusDto>> findAll();
 

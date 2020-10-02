@@ -19,7 +19,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor 
 @ToString
-
 public class AutobusDto {
     
     private Long id;
