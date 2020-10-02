@@ -53,7 +53,7 @@ public class AutobusServiceImplementation implements IAutobusService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<AutobusDto> getById(long id) {
+    public Optional<AutobusDto> findById(long id) {
         return oneToDto(autobusRepository.findById(id));
     }
 

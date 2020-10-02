@@ -6,7 +6,6 @@
 package org.una.laboratorio2.services;
 
 import java.util.List;
-import java.util.Optional;
 import org.una.laboratorio2.dto.RutaDto;
 
 /**
@@ -15,8 +14,8 @@ import org.una.laboratorio2.dto.RutaDto;
  */
 public interface IRutaService {
 
-    public Optional<RutaDto> getById(long id);
+    public RutaDto findById(long id);
 
-    public Optional<List<RutaDto>> findAll();
+    public List<RutaDto> findAll();
 
 }
