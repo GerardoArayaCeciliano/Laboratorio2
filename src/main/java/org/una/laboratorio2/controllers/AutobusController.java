@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.una.laboratorio2.controller;
+package org.una.laboratorio2.controllers;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,29 +17,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.una.laboratorio2.dto.AutobusDto;
 import org.una.laboratorio2.dto.RutaDto;
-import org.una.laboratorio2.services.IRutaService;
+import org.una.laboratorio2.services.IAutobusService;
 
 /**
  *
  * @author Roberth :)
  */
 @RestController
-@RequestMapping("/rutas")
-@Api(tags = {"Rutas"})
-public class RutaController {
+@RequestMapping("/autobuses")
+@Api(tags = {"Autobuses"})
+public class AutobusController {
 
     @Autowired
-    private IRutaService rutaService;
+    private IAutobusService autobusService;
 
     @GetMapping("/{id}")
     @ResponseBody
-    @ApiOperation(value = "Obtiene una sola Ruta basada en su Id", response = RutaDto.class, tags = "Rutas")
+    @ApiOperation(value = "Obtiene un solo autobus basado en su Id", response = RutaDto.class, tags = "Autobuses")
     public ResponseEntity<?> getById(@PathVariable(value = "id") long id) {
         try {
-            RutaDto result = rutaService.findById(id);
-            if (result != null) {
-                return new ResponseEntity<>(result, HttpStatus.OK);
+            Optional<AutobusDto> result = autobusService.findById(id);
+            if (result.isPresent()) {
+                return new ResponseEntity<>(result.get(), HttpStatus.OK);
             }
             return new ResponseEntity<>("Sin resultados", HttpStatus.NO_CONTENT);
         } catch (Exception ex) {
@@ -48,12 +50,12 @@ public class RutaController {
 
     @GetMapping("/")
     @ResponseBody
-    @ApiOperation(value = "Obtiene todas las rutas registradas.", response = RutaDto.class, tags = "Rutas")
+    @ApiOperation(value = "Obtiene todos los autobuses registradas.", response = RutaDto.class, tags = "Autobuses")
     public ResponseEntity<?> getAll() {
         try {
-            List<RutaDto> result = rutaService.findAll();
-            if (!result.isEmpty()) {
-                return new ResponseEntity<>(result, HttpStatus.OK);
+            Optional<List<AutobusDto>> result = autobusService.findAll();
+            if (result != null && result.isPresent()) {
+                return new ResponseEntity<>(result.get(), HttpStatus.OK);
             }
             return new ResponseEntity<>("Sin resultados", HttpStatus.NO_CONTENT);
         } catch (Exception ex) {

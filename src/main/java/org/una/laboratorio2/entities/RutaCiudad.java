@@ -40,8 +40,6 @@ public class RutaCiudad implements Serializable {
     private Ciudad lab2CiudadesId;
     @JoinColumn(name = "lab2_rutas_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Ruta lab2RutasId;
-
-   
+    private Ruta rutas;
     
 }

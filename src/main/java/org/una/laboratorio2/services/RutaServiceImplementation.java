@@ -18,7 +18,7 @@ import org.una.laboratorio2.utils.MapperUtils;
 /**
  *
  * @author Roberth :)
- */ 
+ */
 @Service
 public class RutaServiceImplementation implements IRutaService {
 
@@ -26,7 +26,7 @@ public class RutaServiceImplementation implements IRutaService {
     private IRutaRepository rutaRepo;
 
     @Override
-    public RutaDto getById(long id) {
+    public RutaDto findById(long id) {
         Optional<Ruta> entityRut = rutaRepo.findById(id);
         if (entityRut.isPresent()) {
             return MapperUtils.DtoFromEntity(entityRut.get(), RutaDto.class);
@@ -41,6 +41,15 @@ public class RutaServiceImplementation implements IRutaService {
             MapperUtils.DtoListFromEntityList(entityList, RutaDto.class);
         }
         return new ArrayList();
+    }
+
+    @Override
+    public Integer getNumParadasByRutaId(long id) {
+        Optional<Integer> result = rutaRepo.getNumParadasByRutaId(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
     }
 
 }

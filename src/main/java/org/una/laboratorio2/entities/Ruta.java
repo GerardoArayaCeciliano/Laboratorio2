@@ -58,7 +58,7 @@ public class Ruta implements Serializable {
     @JoinColumn(name = "lab2_ciudades_id_destino", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Ciudad lab2CiudadesIdDestino;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lab2RutasId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutas")
     private List<RutaCiudad> rutaCiudadList;
 
     
