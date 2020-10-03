@@ -17,4 +17,5 @@ public interface IAutobusService {
 
     public CiudadDto getPuntoPartida(long busId);
 
+    public Optional<List<AutobusDto>> getListaDeAutobusPorCiudad(String nombreCiudad);
 }

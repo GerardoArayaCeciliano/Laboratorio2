@@ -5,6 +5,7 @@
  */
 package org.una.lab02.repositories;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +21,7 @@ public interface IAutobusRepository extends JpaRepository<Autobus, Long> {
 
     @Query("select ru.ciudadOrigen from Ruta ru join ru.autobusList au where au.id = :id")
     public Optional<Ciudad> getPuntoPartidaById(@Param("id") long id);
+
+    @Query("select a from Autobus a join a.lab2RutasId r join r.rutaCiudadList c join c.lab2CiudadesId lc where lc.nombre=:nombreCiudad")
+    public Optional<List<Autobus>> getListaDeAutobusPorCiudad(@Param("nombreCiudad") String nombreCiudad);
 }

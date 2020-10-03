@@ -74,4 +74,10 @@ public class AutobusServiceImplementation implements IAutobusService {
         return null;
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<List<AutobusDto>> getListaDeAutobusPorCiudad(String nombreCiudad) {
+        return findList(autobusRepository.getListaDeAutobusPorCiudad(nombreCiudad));
+    }
+
 }
