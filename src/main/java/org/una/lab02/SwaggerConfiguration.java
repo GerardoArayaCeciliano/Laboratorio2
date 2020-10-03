@@ -35,9 +35,10 @@ public class SwaggerConfiguration {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
-                .tags(new Tag("Autobuses", "Métodos de filtrado y obtención de autobuses"),
-                        new Tag("Rutas", "Métodos de filtrado y obtención de autobuses"),
-                        new Tag("Ciuidades", "Métodos de filtrado y obtención de autobuses")
+                .tags(new Tag("Autobuses", "Métodos de filtrado y obtención de Autobuses"),
+                        new Tag("Rutas", "Métodos de filtrado y obtención de Rutas"),
+                        new Tag("Ciudades", "Métodos de filtrado y obtención de Ciudades"),
+                        new Tag("Rutas Ciudades", "Métodos de filtrado y obtención de Rutas Ciudades")
                 );
 
     }
