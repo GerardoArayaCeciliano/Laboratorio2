@@ -17,4 +17,6 @@ public interface IAutobusService {
 
     public CiudadDto getPuntoPartida(long busId);
 
+    public Integer getNumParadasById(long id);
+
 }
