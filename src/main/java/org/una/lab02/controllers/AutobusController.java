@@ -94,4 +94,18 @@ public class AutobusController {
     }
 
 
+    @GetMapping("getListaDeAutobusPorCiudad/{nombreCiudad}")
+    @ResponseBody
+    @ApiOperation(value = "Obtiene una lista de los Autobuses que pasan por una Ciudad.", response = RutaDto.class, tags = "Autobuses")
+    public ResponseEntity<?> getListaDeAutobusPorCiudad(@PathVariable(value = "nombreCiudad") String nombreCiudad) {
+        try {
+            Optional<List<AutobusDto>> result = autobusService.getListaDeAutobusPorCiudad(nombreCiudad);
+            if (result != null && result.isPresent()) {
+                return new ResponseEntity<>(result.get(), HttpStatus.OK);
+            }
+            return new ResponseEntity<>("Sin resultados", HttpStatus.NO_CONTENT);
+        } catch (Exception ex) {
+            return new ResponseEntity<>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -19,4 +19,5 @@ public interface IAutobusService {
 
     public Integer getNumParadasById(long id);
 
+    public Optional<List<AutobusDto>> getListaDeAutobusPorCiudad(String nombreCiudad);
 }
