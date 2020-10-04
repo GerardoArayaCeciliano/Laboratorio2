@@ -74,4 +74,13 @@ public class AutobusServiceImplementation implements IAutobusService {
         return null;
     }
 
+    @Override
+    public Integer getNumParadasById(long id) {
+        Optional<Integer> result =  autobusRepository.getNumeroCiudadesRutaAutobus(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
+    }
+
 }

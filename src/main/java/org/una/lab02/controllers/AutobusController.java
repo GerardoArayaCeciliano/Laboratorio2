@@ -36,7 +36,7 @@ public class AutobusController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    @ApiOperation(value = "Obtiene un solo autobus basado en su Id", response = RutaDto.class, tags = "Autobuses")
+    @ApiOperation(value = "Obtiene un solo autobus basado en su Id", response = AutobusDto.class, tags = "Autobuses")
     public ResponseEntity<?> getById(@PathVariable(value = "id") long id) {
         try {
             Optional<AutobusDto> result = autobusService.findById(id);
@@ -49,9 +49,10 @@ public class AutobusController {
         }
     }
 
+
     @GetMapping("/")
     @ResponseBody
-    @ApiOperation(value = "Obtiene todos los autobuses registradas.", response = RutaDto.class, tags = "Autobuses")
+    @ApiOperation(value = "Obtiene todos los autobuses registradas.", response = AutobusDto.class, tags = "Autobuses")
     public ResponseEntity<?> getAll() {
         try {
             Optional<List<AutobusDto>> result = autobusService.findAll();
@@ -66,7 +67,7 @@ public class AutobusController {
 
     @GetMapping("getPuntoPartida/{id}")
     @ResponseBody
-    @ApiOperation(value = "Obtiene el punto de partida de la ruta que hace el autobus especificado.", response = CiudadDto.class, tags = "Autobuses")
+    @ApiOperation(value = "Obtiene el punto de partida de la ruta que hace el autobus especificado.", response = AutobusDto.class, tags = "Autobuses")
     public ResponseEntity<?> getPuntoPartida(@PathVariable(value = "id") long idBus) {
         try {
             CiudadDto result = autobusService.getPuntoPartida(idBus);
@@ -78,5 +79,19 @@ public class AutobusController {
             return new ResponseEntity<>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("getCantParadas/{id}")
+    @ResponseBody
+    @ApiOperation(value = "Obtiene la cantidad de paradas de un autobus especificado.", response = AutobusDto.class, tags = "Autobuses")
+    public Integer getCantParadasAutobus(@PathVariable(value = "id") long idBus) {
+        try {
+            int result = autobusService.getNumParadasById(idBus);
+            return result;
+
+        } catch (Exception ex) {
+            return 0;
+        }
+    }
+
 
 }

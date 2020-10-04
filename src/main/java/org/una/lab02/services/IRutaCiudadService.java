@@ -7,7 +7,9 @@ package org.una.lab02.services;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.una.lab02.dto.RutaCiudadDto;
+
 
 /**
  *
@@ -18,5 +20,6 @@ public interface IRutaCiudadService {
     public Optional<RutaCiudadDto> getById(long id);
 
     public Optional<List<RutaCiudadDto>> findAll();
+
 
 }
